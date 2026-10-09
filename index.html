@@ -1,0 +1,195 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#101810">
+  <meta name="description" content="TouchGrass AI creates personalized outdoor adventures with open-weight AI.">
+  <title>TouchGrass AI — Find Your Outside</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="ambient ambient-one"></div>
+  <div class="ambient ambient-two"></div>
+
+  <header class="topbar">
+    <a href="#" class="brand">
+      <span class="brand-icon">✳</span>
+      <span>touchgrass<span class="brand-ai">.ai</span></span>
+    </a>
+    <nav>
+      <a href="#discover">Discover</a>
+      <a href="#generator">AI missions</a>
+      <a href="#progress">Your journey</a>
+    </nav>
+    <div class="header-right">
+      <span class="status-dot"></span>
+      <span class="status-label">Local AI</span>
+      <button class="avatar" id="profileButton" aria-label="Profile">TG</button>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="welcome">
+      <div>
+        <div class="eyebrow"><span class="live-dot"></span> YOUR PERSONAL OUTDOOR COMPANION</div>
+        <h1>A little less <span class="muted-title">scrolling.</span><br>
+          A little more <span class="green-title">living.</span></h1>
+        <p class="welcome-copy">The world is happening outside. Let AI help you find your next little adventure.</p>
+      </div>
+      <div class="date-chip">
+        <span>✳</span>
+        <div>
+          <strong id="todayDate">YOUR NEXT CHAPTER</strong>
+          <small>Starts right outside.</small>
+        </div>
+      </div>
+    </section>
+
+    <section class="hero-card" id="discover">
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <span class="hero-tag">✦ YOUR DAILY REMINDER</span>
+        <h2>The best things<br>aren't on your screen.</h2>
+        <p>Fresh air. New paths. Tiny discoveries.<br>Your next story is waiting to happen.</p>
+        <a href="#generator" class="primary-button">Find my adventure <span>↗</span></a>
+      </div>
+      <div class="hero-caption"><span class="caption-line"></span> SOMEWHERE OUT THERE</div>
+      <div class="hero-number">01 <span>/ 04</span></div>
+    </section>
+
+    <section class="stats-grid" id="progress">
+      <article class="stat-card">
+        <div class="stat-top"><span>Time outdoors</span><span class="stat-icon">◷</span></div>
+        <div class="stat-value"><span id="minutesStat">0</span><small> min</small></div>
+        <div class="stat-foot">Every minute counts.</div>
+        <div class="mini-track"><div id="minutesBar" style="width:0%"></div></div>
+      </article>
+      <article class="stat-card">
+        <div class="stat-top"><span>Missions completed</span><span class="stat-icon">✳</span></div>
+        <div class="stat-value" id="completedStat">0</div>
+        <div class="stat-foot">Small wins, big world.</div>
+        <div class="mini-track"><div id="completedBar" style="width:0%"></div></div>
+      </article>
+      <article class="stat-card">
+        <div class="stat-top"><span>Current streak</span><span class="stat-icon">♨</span></div>
+        <div class="stat-value"><span id="streakStat">0</span><small> days</small></div>
+        <div class="stat-foot">Build a habit, not a feed.</div>
+        <div class="mini-track"><div id="streakBar" style="width:0%"></div></div>
+      </article>
+    </section>
+
+    <section class="section-block" id="generator">
+      <div class="section-heading">
+        <div>
+          <div class="eyebrow">POWERED BY OPEN-WEIGHT AI</div>
+          <h2>Your next adventure<span class="green-period">.</span></h2>
+          <p>Tell us what you're feeling. Your local AI will do the dreaming.</p>
+        </div>
+        <div class="model-pill"><span class="live-dot"></span><span id="modelStatus">Checking local AI...</span></div>
+      </div>
+
+      <div class="builder-grid">
+        <div class="builder-panel">
+          <label class="field-label">01 / HOW ARE YOU FEELING?</label>
+          <div class="choice-grid" id="moodChoices">
+            <button class="choice active" data-mood="curious"><span>🔎</span> Curious</button>
+            <button class="choice" data-mood="stressed"><span>🌿</span> Need calm</button>
+            <button class="choice" data-mood="energetic"><span>⚡</span> Energetic</button>
+            <button class="choice" data-mood="bored"><span>☁</span> Bored</button>
+          </div>
+
+          <label class="field-label">02 / HOW MUCH TIME HAVE YOU GOT?</label>
+          <div class="choice-grid time-grid" id="timeChoices">
+            <button class="choice active" data-time="10">10 min</button>
+            <button class="choice" data-time="20">20 min</button>
+            <button class="choice" data-time="30">30 min</button>
+            <button class="choice" data-time="60">1 hour</button>
+          </div>
+
+          <label class="field-label" for="activitySelect">03 / WHAT SOUNDS GOOD?</label>
+          <select id="activitySelect" class="select-field">
+            <option value="nature discovery">Nature discovery</option>
+            <option value="walking and exploring">Walking and exploring</option>
+            <option value="mindfulness and relaxation">Mindfulness and relaxation</option>
+            <option value="outdoor photography">Outdoor photography</option>
+            <option value="bird watching">Bird watching</option>
+            <option value="gardening">Gardening</option>
+            <option value="light exercise">Light exercise</option>
+          </select>
+
+          <label class="field-label" for="locationInput">04 / YOUR OUTDOOR SPACE (OPTIONAL)</label>
+          <input class="select-field" id="locationInput" maxlength="100" placeholder="e.g. my garden, local park, neighborhood">
+
+          <button class="generate-button" id="generateButton">
+            <span>✳</span> Generate my mission <span class="button-arrow">↗</span>
+          </button>
+          <p class="privacy-note">⌑ Your preferences stay in this browser. AI runs locally on your computer.</p>
+        </div>
+
+        <div class="mission-panel" id="missionPanel" aria-live="polite">
+          <div class="empty-state" id="emptyState">
+            <div class="empty-orbit"><span>✳</span></div>
+            <span class="eyebrow">YOUR NEXT LITTLE ADVENTURE</span>
+            <h3>Something good<br>is out there.</h3>
+            <p>Choose your mood, pick your time, and let your local AI create a tiny adventure worth stepping out for.</p>
+            <div class="empty-bottom"><span>✦</span> MADE FOR THE REAL WORLD</div>
+          </div>
+          <div id="missionResult" hidden></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-block ideas-section">
+      <div class="section-heading">
+        <div>
+          <div class="eyebrow">A LITTLE INSPIRATION</div>
+          <h2>Pick your kind of outside<span class="green-period">.</span></h2>
+          <p>Not every adventure needs a mountain.</p>
+        </div>
+      </div>
+      <div class="ideas-grid">
+        <button class="idea-card idea-green" data-activity="nature discovery" data-mood="curious" data-time="20">
+          <span class="idea-emoji">🍃</span><span class="idea-number">01 — OBSERVE</span>
+          <strong>Nature detective</strong><span class="idea-description">Find tiny wonders hiding in plain sight.</span><span class="idea-arrow">↗</span>
+        </button>
+        <button class="idea-card idea-sand" data-activity="mindfulness and relaxation" data-mood="stressed" data-time="10">
+          <span class="idea-emoji">☀️</span><span class="idea-number">02 — RESET</span>
+          <strong>Quiet your mind</strong><span class="idea-description">Trade the noise for a little fresh air.</span><span class="idea-arrow">↗</span>
+        </button>
+        <button class="idea-card idea-blue" data-activity="outdoor photography" data-mood="curious" data-time="30">
+          <span class="idea-emoji">📷</span><span class="idea-number">03 — CREATE</span>
+          <strong>Chase a moment</strong><span class="idea-description">See an ordinary place differently.</span><span class="idea-arrow">↗</span>
+        </button>
+      </div>
+    </section>
+
+    <section class="section-block saved-section" id="savedSection">
+      <div class="section-heading">
+        <div>
+          <div class="eyebrow">YOUR PERSONAL COLLECTION</div>
+          <h2>Saved adventures<span class="green-period">.</span></h2>
+          <p>Keep the good ideas for another day.</p>
+        </div>
+        <span class="saved-count" id="savedCount">0 SAVED</span>
+      </div>
+      <div class="saved-grid" id="savedGrid">
+        <div class="saved-empty">Your next adventure could live here. Generate a mission and save it for later.</div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <a href="#" class="brand"><span class="brand-icon">✳</span><span>touchgrass<span class="brand-ai">.ai</span></span></a>
+      <p>Built for the life happening beyond the screen.</p>
+      <span class="footer-status"><span class="live-dot"></span> OPEN AI. OPEN AIR.</span>
+    </footer>
+  </main>
+
+  <div class="toast" id="toast" role="status"></div>
+  <script src="script.js"></script>
+</body>
+</html>
